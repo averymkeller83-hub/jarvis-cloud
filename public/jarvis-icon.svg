@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Core glow gradient -->
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.4"/>
+      <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.12"/>
+      <stop offset="70%" stop-color="#818cf8" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#030712" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Inner bright core -->
+    <radialGradient id="innerCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="30%" stop-color="#7dd3fc" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Ring gradient -->
+    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <!-- Outer ring glow -->
+    <filter id="glowOuter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Strong glow for core -->
+    <filter id="glowCore" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Subtle glow for lines -->
+    <filter id="glowLine" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Text glow -->
+    <filter id="glowText" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Ambient light from core -->
+    <radialGradient id="ambientLight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#030712" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" fill="#030712"/>
+
+  <!-- Ambient radial light -->
+  <rect width="512" height="512" fill="url(#ambientLight)"/>
+
+  <!-- Core glow (large diffuse) -->
+  <circle cx="256" cy="256" r="200" fill="url(#coreGlow)"/>
+
+  <!-- Outer ring (thick) -->
+  <circle cx="256" cy="256" r="165" fill="none" stroke="url(#ringGrad)" stroke-width="2.5" stroke-opacity="0.5" filter="url(#glowOuter)"/>
+
+  <!-- Outer ring segments (arc reactor style - 12 segments) -->
+  <g stroke="#38bdf8" stroke-width="2" stroke-opacity="0.35" filter="url(#glowLine)">
+    <!-- Tick marks around outer ring -->
+    <line x1="256" y1="80" x2="256" y2="100"/>
+    <line x1="344" y1="104.6" x2="334" y2="121.9"/>
+    <line x1="407.4" y1="168" x2="390.1" y2="178"/>
+    <line x1="432" y1="256" x2="412" y2="256"/>
+    <line x1="407.4" y1="344" x2="390.1" y2="334"/>
+    <line x1="344" y1="407.4" x2="334" y2="390.1"/>
+    <line x1="256" y1="432" x2="256" y2="412"/>
+    <line x1="168" y1="407.4" x2="178" y2="390.1"/>
+    <line x1="104.6" y1="344" x2="121.9" y2="334"/>
+    <line x1="80" y1="256" x2="100" y2="256"/>
+    <line x1="104.6" y1="168" x2="121.9" y2="178"/>
+    <line x1="168" y1="104.6" x2="178" y2="121.9"/>
+  </g>
+
+  <!-- Middle ring -->
+  <circle cx="256" cy="256" r="130" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.3" filter="url(#glowLine)"/>
+
+  <!-- Inner decorative ring with dashes -->
+  <circle cx="256" cy="256" r="105" fill="none" stroke="#818cf8" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="8 12" filter="url(#glowLine)"/>
+
+  <!-- Energy ring (bright) -->
+  <circle cx="256" cy="256" r="80" fill="none" stroke="#38bdf8" stroke-width="3" stroke-opacity="0.6" filter="url(#glowOuter)"/>
+
+  <!-- Inner energy ring -->
+  <circle cx="256" cy="256" r="60" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.4" filter="url(#glowLine)"/>
+
+  <!-- Connector lines from inner to outer ring (arc reactor spokes) -->
+  <g stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.25" filter="url(#glowLine)">
+    <line x1="256" y1="196" x2="256" y2="136"/>
+    <line x1="308.4" y1="226" x2="359.9" y2="196"/>
+    <line x1="308.4" y1="286" x2="359.9" y2="316"/>
+    <line x1="256" y1="316" x2="256" y2="376"/>
+    <line x1="203.6" y1="286" x2="152.1" y2="316"/>
+    <line x1="203.6" y1="226" x2="152.1" y2="196"/>
+  </g>
+
+  <!-- Small energy nodes at spoke endpoints -->
+  <g fill="#38bdf8" filter="url(#glowLine)">
+    <circle cx="256" cy="136" r="4" opacity="0.6"/>
+    <circle cx="359.9" cy="196" r="4" opacity="0.6"/>
+    <circle cx="359.9" cy="316" r="4" opacity="0.6"/>
+    <circle cx="256" cy="376" r="4" opacity="0.6"/>
+    <circle cx="152.1" cy="316" r="4" opacity="0.6"/>
+    <circle cx="152.1" cy="196" r="4" opacity="0.6"/>
+  </g>
+
+  <!-- Core bright center -->
+  <circle cx="256" cy="256" r="42" fill="url(#innerCore)" filter="url(#glowCore)"/>
+
+  <!-- "J" letterform in the center -->
+  <text x="256" y="278" text-anchor="middle" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="72" fill="#030712" opacity="0.9" filter="url(#glowText)">J</text>
+  <text x="256" y="278" text-anchor="middle" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="72" fill="url(#ringGrad)" opacity="0.15">J</text>
+
+  <!-- Subtle corner vignette -->
+  <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+    <stop offset="60%" stop-color="#030712" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#030712" stop-opacity="0.5"/>
+  </radialGradient>
+  <rect width="512" height="512" fill="url(#vignette)"/>
+</svg>

@@ -1,0 +1,42 @@
+name = "jarvis-cloud"
+main = "src/index.ts"
+compatibility_date = "2025-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[rules]]
+type = "Text"
+globs = ["**/*.txt"]
+
+[[rules]]
+type = "Data"
+globs = ["**/*.png"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jarvis-memory"
+database_id = "<your-d1-database-id>"
+migrations_dir = "migrations"
+
+[[d1_databases]]
+binding = "AUDIT_DB"
+database_name = "jarvis-audit"
+database_id = "<your-audit-d1-database-id>"
+migrations_dir = "migrations/audit"
+
+[durable_objects]
+bindings = [
+  { name = "MAC_BRIDGE", class_name = "MacBridge" }
+]
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["MacBridge"]
+
+[ai]
+binding = "AI"
+
+workers_dev = true
+
+[[routes]]
+pattern = "avery-keller.net/*"
+zone_name = "avery-keller.net"
